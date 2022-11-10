@@ -1,0 +1,46 @@
+body {
+  margin: 30px 10px;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  border: 1px solid black;
+  border-radius: 5px;
+  max-width: 650px;
+  padding: 20px;
+}
+
+.current-day {
+  background: #f0f1f2;
+  border-radius: 5px;
+  padding: 20px 10px;
+}
+
+.current-temp {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.today-icon {
+  color: #606060;
+  font-size: 80px;
+}
+
+.units {
+  font-size: 20px;
+  position: relative;
+  top: -12px;
+}
+
+.weather-icon {
+  color: #979797;
+  font-size: 30px;
+}
