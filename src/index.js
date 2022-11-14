@@ -1,22 +1,25 @@
-// let days = [
-//   "Sunday",
-//   "Monday",
-//   "Tuesday",
-//   "Wednesday",
-//   "Thursday",
-//   "Friday",
-//   "Saturday"
-// ];
-// let currentTime = new Date();
-// let weekDay = days[currentTime.getDay()];
-// let timeHour = currentTime.getHours();
-// let timeMinute = currentTime.getMinutes();
-// let timeHeading = document.querySelector("#time");
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
 let searchForm = document.querySelector("#search-form");
 let currentButton = document.querySelector("#current-button");
 // let celsiusUnitLink = document.querySelector("#celsius");
 // let fahrenheitUnitLink = document.querySelector("#fahrenheit");
-// timeHeading.innerHTML = `${weekDay} ${timeHour}:${timeMinute}`;
+
+function formatTime(date) {
+  let time = new Date(date * 1000);
+  let weekDay = days[time.getDay()];
+  let timeHour = time.getHours();
+  let timeMinute = time.getMinutes();
+  return `${weekDay} ${timeHour}:${timeMinute}`;
+}
 
 function displayData(response) {
   let temp = Math.round(response.data.main.temp);
@@ -25,9 +28,12 @@ function displayData(response) {
   let cityName = document.querySelector("#city");
   let temperature = document.querySelector(".current-temp");
   let weatherDescription = document.querySelector("#description");
+  let updatedTime = document.querySelector("#time");
+
   cityName.innerHTML = city;
   temperature.innerHTML = temp;
   weatherDescription.innerHTML = description;
+  updatedTime.innerHTML = formatTime(response.data.dt);
 }
 
 function getTemperature(city) {
