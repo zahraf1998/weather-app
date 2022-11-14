@@ -25,15 +25,21 @@ function displayData(response) {
   let temp = Math.round(response.data.main.temp);
   let city = response.data.name;
   let description = response.data.weather[0].main;
-  let cityName = document.querySelector("#city");
-  let temperature = document.querySelector(".current-temp");
-  let weatherDescription = document.querySelector("#description");
-  let updatedTime = document.querySelector("#time");
+  let humidity = response.data.main.humidity;
+  let windSpeed = response.data.wind.speed;
+  let cityNameElement = document.querySelector("#city");
+  let temperatureElement = document.querySelector(".current-temp");
+  let descriptionElement = document.querySelector("#description");
+  let updatedTimeElement = document.querySelector("#time");
+  let humidityElement = document.querySelector("#humidity");
+  let windSpeedElement = document.querySelector("#wind");
 
-  cityName.innerHTML = city;
-  temperature.innerHTML = temp;
-  weatherDescription.innerHTML = description;
-  updatedTime.innerHTML = formatTime(response.data.dt);
+  cityNameElement.innerHTML = city;
+  temperatureElement.innerHTML = temp;
+  descriptionElement.innerHTML = description;
+  humidityElement.innerHTML = humidity;
+  windSpeedElement.innerHTML = windSpeed;
+  updatedTimeElement.innerHTML = formatTime(response.data.dt);
 }
 
 function getTemperature(city) {
