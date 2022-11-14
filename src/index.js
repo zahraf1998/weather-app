@@ -7,11 +7,12 @@ let days = [
   "Friday",
   "Saturday",
 ];
+let celsiusTemp = null;
 
 let searchForm = document.querySelector("#search-form");
 let currentButton = document.querySelector("#current-button");
-// let celsiusUnitLink = document.querySelector("#celsius");
-// let fahrenheitUnitLink = document.querySelector("#fahrenheit");
+let celsiusUnitLink = document.querySelector("#celsius");
+let fahrenheitUnitLink = document.querySelector("#fahrenheit");
 
 function formatTime(date) {
   let time = new Date(date * 1000);
@@ -26,7 +27,7 @@ function displayData(response) {
   let city = response.data.name;
   let description = response.data.weather[0].main;
   let humidity = response.data.main.humidity;
-  let windSpeed = response.data.wind.speed;
+  let windSpeed = Math.round(response.data.wind.speed);
   let cityNameElement = document.querySelector("#city");
   let temperatureElement = document.querySelector(".current-temp");
   let descriptionElement = document.querySelector("#description");
@@ -36,6 +37,7 @@ function displayData(response) {
   let todayIconElement = document.querySelector("#today-icon");
   let iconUrl = `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`;
 
+  celsiusTemp = temp;
   cityNameElement.innerHTML = city;
   temperatureElement.innerHTML = temp;
   descriptionElement.innerHTML = description;
@@ -74,18 +76,25 @@ function getPosition() {
   navigator.geolocation.getCurrentPosition(getCurrentTemperature);
 }
 
-// function changeUnit(event) {
-//   event.preventDefault();
-//   let temperature = document.querySelector(".current-temp");
-//   let isCelsius = event.target.innerHTML === "°C";
-//   if (isCelsius) {
-//     temperature.innerHTML = "19";
-//   } else {
-//     temperature.innerHTML = "66";
-//   }
-// }
+function changeUnit(event) {
+  event.preventDefault();
+  let temperature = document.querySelector(".current-temp");
+  let active = event.target.classList.contains("active");
+  let isCelsius = event.target.innerHTML === "°C";
+
+  if (!active) {
+    celsiusUnitLink.classList.toggle("active");
+    fahrenheitUnitLink.classList.toggle("active");
+    if (isCelsius) {
+      temperature.innerHTML = celsiusTemp;
+    } else {
+      temperature.innerHTML = Math.round(celsiusTemp * 1.8 + 32);
+    }
+  }
+}
+
 getPosition();
 searchForm.addEventListener("submit", searchData);
 currentButton.addEventListener("click", getPosition);
-// celsiusUnitLink.addEventListener("click", changeUnit);
-// fahrenheitUnitLink.addEventListener("click", changeUnit);
+celsiusUnitLink.addEventListener("click", changeUnit);
+fahrenheitUnitLink.addEventListener("click", changeUnit);
