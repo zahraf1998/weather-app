@@ -21,8 +21,15 @@ ul {
 li {
   list-style: none;
 }
+
 button.location {
   min-width: 60%;
+}
+
+footer {
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.7;
 }
 
 .container {
@@ -30,10 +37,11 @@ button.location {
   border-radius: 5px;
   max-width: 650px;
   padding: 20px;
+  background-color: #f0fbff;
 }
 
 .current-day {
-  background: #f0f1f2;
+  background: #c3e7f4;
   border-radius: 5px;
   padding: 20px 10px;
 }
@@ -83,6 +91,11 @@ button.location {
   margin-right: 5px;
 }
 
-footer {
-  text-align: center;
+.card-body {
+  background-color: #c3e7f4;
+}
+
+.card-header,
+.card-footer {
+  background-color: #a1d5e8;
 }
