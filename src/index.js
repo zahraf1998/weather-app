@@ -22,11 +22,6 @@ function formatTime(date) {
 }
 
 function displayData(response) {
-  let temp = Math.round(response.data.main.temp);
-  let city = response.data.name;
-  let description = response.data.weather[0].main;
-  let humidity = response.data.main.humidity;
-  let windSpeed = Math.round(response.data.wind.speed);
   let cityNameElement = document.querySelector("#city");
   let temperatureElement = document.querySelector(".current-temp");
   let descriptionElement = document.querySelector("#description");
@@ -36,12 +31,12 @@ function displayData(response) {
   let todayIconElement = document.querySelector("#today-icon");
   let iconUrl = `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`;
 
-  celsiusTemp = temp;
-  cityNameElement.innerHTML = city;
-  temperatureElement.innerHTML = temp;
-  descriptionElement.innerHTML = description;
-  humidityElement.innerHTML = humidity;
-  windSpeedElement.innerHTML = windSpeed;
+  celsiusTemp = Math.round(response.data.main.temp);
+  cityNameElement.innerHTML = response.data.name;
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
   updatedTimeElement.innerHTML = formatTime(response.data.dt);
   todayIconElement.src = iconUrl;
 }
@@ -55,17 +50,15 @@ function displayForecast(response) {
     let date = new Date(day.dt * 1000);
     let weekDay = days[date.getDay()].slice(0, 3);
 
-    forecast =
-      forecast +
-      `<div class="col-2 p-1">
+    forecast += `<div class="col-3 col-sm-2 p-1">
         <div class="card text-bg-light mb-3 forecast-container">
          <div class="card-header forecast-date">${weekDay}</div>
-         <div class="card-body forecast-img">
+         <div class="card-body p-1 forecast-img">
            <img src="http://openweathermap.org/img/wn/${
              day.weather[0].icon
            }@2x.png" class="forecast-img"></img>
          </div>
-         <div class="card-footer forecast-temp">
+         <div class="card-footer p-1 pt-2 pb-2 forecast-temp">
            <span class="forecast-temp-max"> ${Math.round(day.temp.max)}° </span
            ><span class="forecast-temp-min text-muted"> ${Math.round(
              day.temp.min
@@ -128,11 +121,9 @@ function changeUnit(event) {
   if (!active) {
     celsiusUnitLink.classList.toggle("active");
     fahrenheitUnitLink.classList.toggle("active");
-    if (isCelsius) {
-      temperature.innerHTML = celsiusTemp;
-    } else {
-      temperature.innerHTML = Math.round(celsiusTemp * 1.8 + 32);
-    }
+    temperature.innerHTML = isCelsius
+      ? celsiusTemp
+      : Math.round(celsiusTemp * 1.8 + 32);
   }
 }
 

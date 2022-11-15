@@ -23,7 +23,7 @@
       <form id="search-form">
         <div class="mb-3">
           <div class="row text-center">
-            <div class="col-7">
+            <div class="col-8">
               <input
                 type="text"
                 placeholder="Enter a city"
@@ -32,12 +32,10 @@
                 autocomplete="off"
               />
             </div>
-            <div class="col-2">
-              <input
-                type="submit"
-                value="Search"
-                class="btn btn-outline-secondary"
-              />
+            <div class="col-1">
+              <button type="submit" class="btn btn-outline-secondary">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
             </div>
             <div class="col-3">
               <button
@@ -45,7 +43,7 @@
                 class="btn btn-secondary"
                 id="current-button"
               >
-                Current
+                <i class="fa-solid fa-location-dot"></i>
               </button>
             </div>
           </div>
@@ -75,7 +73,7 @@
         </div>
       </div>
       <hr />
-      <div class="row text-center" id="forecast"></div>
+      <div class="row text-center justify-content-center" id="forecast"></div>
     </div>
     <footer>
       Code on
