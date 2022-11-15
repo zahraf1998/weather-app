@@ -76,6 +76,28 @@ function getPosition() {
   navigator.geolocation.getCurrentPosition(getCurrentTemperature);
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecast = "";
+  forecast =
+    forecast +
+    `   <div class="col-2">
+          <div class="card text-bg-light mb-3 forecast-container">
+            <div class="card-header forecast-date">Thu</div>
+            <div class="card-body forecast-img">
+              <i class="fa-solid fa-cloud weather-icon"></i>
+            </div>
+            <div class="card-footer forecast-temp">
+              <span class="forecast-temp-max"> 18° </span
+              ><span class="forecast-temp-min text-muted"> 11°</span>
+            </div>
+          </div>
+        </div>`;
+
+  forecastElement.innerHTML = forecast;
+}
+
 function changeUnit(event) {
   event.preventDefault();
   let temperature = document.querySelector(".current-temp");
@@ -98,3 +120,4 @@ searchForm.addEventListener("submit", searchData);
 currentButton.addEventListener("click", getPosition);
 celsiusUnitLink.addEventListener("click", changeUnit);
 fahrenheitUnitLink.addEventListener("click", changeUnit);
+displayForecast();
