@@ -21,6 +21,9 @@ ul {
 li {
   list-style: none;
 }
+button.location {
+  min-width: 60%;
+}
 
 .container {
   border: 1px solid black;
