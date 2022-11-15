@@ -127,7 +127,7 @@ function changeUnit(event) {
   }
 }
 
-getTemperature("paris");
+getTemperature("Tehran");
 searchForm.addEventListener("submit", searchData);
 currentButton.addEventListener("click", getPosition);
 celsiusUnitLink.addEventListener("click", changeUnit);
