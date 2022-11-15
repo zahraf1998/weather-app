@@ -127,7 +127,7 @@ function changeUnit(event) {
   }
 }
 
-getPosition();
+getTemperature("paris");
 searchForm.addEventListener("submit", searchData);
 currentButton.addEventListener("click", getPosition);
 celsiusUnitLink.addEventListener("click", changeUnit);
