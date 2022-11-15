@@ -59,6 +59,27 @@ li {
   font-size: 30px;
 }
 
+.forecast-container,
+.card-header,
+.card-footer {
+  border: none;
+}
+.forecast-container {
+  transition: all 200ms ease-in-out;
+}
+
+.forecast-container:hover {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-temp {
+  font-size: 13px;
+}
+
+.forecast-temp-max {
+  margin-right: 5px;
+}
+
 footer {
   text-align: center;
 }
