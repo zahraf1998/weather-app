@@ -29,7 +29,7 @@ function displayData(response) {
   let humidityElement = document.querySelector("#humidity");
   let windSpeedElement = document.querySelector("#wind");
   let todayIconElement = document.querySelector("#today-icon");
-  let iconUrl = `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`;
+  let iconUrl = `images/${response.data.weather[0].icon}.svg`;
 
   celsiusTemp = Math.round(response.data.main.temp);
   cityNameElement.innerHTML = response.data.name;
@@ -54,9 +54,9 @@ function displayForecast(response) {
         <div class="card text-bg-light mb-3 forecast-container">
          <div class="card-header forecast-date">${weekDay}</div>
          <div class="card-body p-1 forecast-img">
-           <img src="http://openweathermap.org/img/wn/${
+           <img src="images/${
              day.weather[0].icon
-           }@2x.png" class="forecast-img"></img>
+           }.svg" class="forecast-img"></img>
          </div>
          <div class="card-footer p-1 pt-2 pb-2 forecast-temp">
            <span class="forecast-temp-max"> ${Math.round(day.temp.max)}° </span
