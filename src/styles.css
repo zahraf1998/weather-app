@@ -54,9 +54,8 @@ li {
   top: -12px;
 }
 
-.weather-icon {
-  color: #979797;
-  font-size: 30px;
+.forecast-img {
+  width: 100%;
 }
 
 .forecast-container,
