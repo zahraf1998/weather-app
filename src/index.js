@@ -17,7 +17,10 @@ function formatTime(date) {
   let time = new Date(date * 1000);
   let weekDay = days[time.getDay()];
   let timeHour = time.getHours();
+  if (timeHour < 10) timeHour = "0" + timeHour;
   let timeMinute = time.getMinutes();
+  if (timeMinute < 10) timeMinute = "0" + timeMinute;
+
   return `${weekDay} ${timeHour}:${timeMinute}`;
 }
 
