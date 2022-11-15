@@ -33,11 +33,12 @@ footer {
 }
 
 .container {
-  border: 1px solid black;
+  background-color: #f0fbff;
   border-radius: 5px;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
   max-width: 650px;
   padding: 20px;
-  background-color: #f0fbff;
 }
 
 .current-day {
